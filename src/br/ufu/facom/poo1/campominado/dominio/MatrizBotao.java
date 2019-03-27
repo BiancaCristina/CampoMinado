@@ -79,11 +79,6 @@ public class MatrizBotao {
 		this.qtd_bandeiras = bombas;
 	}
 	
-	public void atualizaIcone(ImageIcon icone) {
-		//ATUALIZA O ICONE
-		this.ney = icone;
-	}
-	
 	public void janelaSize(int i, int j) {
 		// ATUALIZA O TAMANHO DA JANELA
 		janela.setSize(i, j);
@@ -140,17 +135,7 @@ public class MatrizBotao {
 		janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
 		cronometro.iniciarCr(); // INICIAR CRONOMETRO
 	}
-	
-	public boolean verificaTamanho() {
-		// VERIFICA O TAMANHO
-		if (tamanho == 0 || tamanho < 0) return false;
-		else return true;
-	}
-	
-	public int retornaTamanho() {
-		// DEVOLVE O TAMANHO DO CAMPO
-		return this.tamanho;
-	}
+
 	public void abreJanela() {
 		// ABRE A JANELA DO CAMPO
 		janela.setVisible(true);
@@ -240,11 +225,6 @@ public class MatrizBotao {
 		return contador;		
 	}
 	
-	public void trataBotao (int i, int j, MouseListener trataClick) {
-		// CANCELA UM BOTÃO
-		matrizBotao[i][j].cancelaBotao(trataClick, this.icones.retornaIcone(this.matrizBotao[i][j].qtdMinas()));
-	}
-	
 	public boolean posicaoValida (int i, int j) {
 		// VERIFICA SE OS INDEX i E j SAO VALIDOS
 		if (i>=0 && j>=0 && i<tamanho && j<tamanho && (!matrizBotao[i][j].ehBandeira())) return true;
@@ -254,12 +234,6 @@ public class MatrizBotao {
 	public boolean botaoValido(int i, int j) {
 		// VERIFICA SE A RECURSÃO DEVE CONTINUAR NESSE BOTÃO OU NÃO
 		if (matrizBotao[i][j].qtdMinas() == 0 && matrizBotao[i][j].estaHabilitado()) return true;
-		else return false;
-	}
-	
-	public boolean botaoHabilitado(int i, int j) {
-		// VERIFICA SE UM DETERMINADO BOTÃO ESTA HABILITADO
-		if (matrizBotao[i][j].estaHabilitado()) return true;
 		else return false;
 	}
 	

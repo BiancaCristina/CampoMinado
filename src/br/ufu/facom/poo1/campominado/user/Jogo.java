@@ -12,11 +12,10 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
 import br.ufu.facom.poo1.campominado.dominio.*;
+
 
 public class Jogo {
 	public static void main(String[] args) {		
@@ -24,7 +23,7 @@ public class Jogo {
 		final JButton intermediario = new JButton("INTERMEDIARIO");
 		final JButton dificil = new JButton("AVANÇADO");
 		final JButton impossivel = new JButton("IMPOSSIVEL");
-		
+
 		// DEFININDO PARTE VISUAL DOS BOTÕES
 		iniciante.setBackground(new Color(255, 255, 000));
 		iniciante.setFont(new Font("Impact", 0, 30));
@@ -34,8 +33,8 @@ public class Jogo {
 		dificil.setFont(new Font("Impact", 0, 30));
 		impossivel.setBackground(new Color(000, 255, 000));
 		impossivel.setFont(new Font("Impact", 0, 30));
-		
-		
+
+
 		final JFrame janela = new JFrame("CAMPO MINADO SELEÇÃO BRASILEIRA");
 			janela.add(iniciante);
 			janela.add(intermediario);
@@ -43,14 +42,14 @@ public class Jogo {
 			janela.add(impossivel);
 			janela.setSize(400, 400);
 			janela.setLayout(new GridLayout(4,0));
-			janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);			
+			janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			janela.setVisible(true);
 		// FIM DA DEFINIÇÃO VISUAL DOS BOTÕES
-		
+
 		ActionListener trataTecla = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JButton botaoClicado = (JButton)e.getSource();
-				
+
 				if (botaoClicado.getText().equals("INICIANTE"))
 				{
 					MatrizBotao campo = new MatrizBotao(8);
@@ -64,7 +63,7 @@ public class Jogo {
 					campo.abreJanela();
 					campo.jogarCampoMinado();
 				}
-				
+
 				else if (botaoClicado.getText().equals("INTERMEDIARIO"))
 				{
 					MatrizBotao campo = new MatrizBotao(16);
@@ -78,7 +77,7 @@ public class Jogo {
 					campo.abreJanela();
 					campo.jogarCampoMinado();
 				}
-				
+
 				else if (botaoClicado.getText().equals("AVANÇADO"))
 				{
 					MatrizBotao campo = new MatrizBotao(22);
@@ -92,7 +91,7 @@ public class Jogo {
 					campo.abreJanela();
 					campo.jogarCampoMinado();
 				}
-				
+
 				else if (botaoClicado.getText().equals("IMPOSSIVEL"))
 				{
 					MatrizBotao campo = new MatrizBotao(30);
@@ -105,10 +104,10 @@ public class Jogo {
 					campo.imprimeMatriz();
 					campo.abreJanela();
 					campo.jogarCampoMinado();
-				}				
+				}
 			}
 		};
-		
+
 		iniciante.addActionListener(trataTecla);
 		intermediario.addActionListener(trataTecla);
 		dificil.addActionListener(trataTecla);

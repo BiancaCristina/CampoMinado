@@ -54,12 +54,6 @@ public class Botao {
 		qtd_minas = 9; 
 	}
 	
-	public void desabilita() {
-		// DESABILITA O BOTAO
-		habilitado = false;
-		botao.setEnabled(false);
-	}
-	
 	public boolean ehMina(){
 		// RETORNA TRUE SE FOR MINA, FALSE SE NÃO FOR
 		return this.mina;
@@ -85,20 +79,23 @@ public class Botao {
 		botao.addMouseListener(trataClick);
 	}
 	
-	
 	public void cancelaBotao(MouseListener trataClick, ImageIcon icone) {
 		// DESABILITA O BOTÃO E RETIRA SUAS FUNCIONALIDADES
-		botao.setFocusable(false);
-		botao.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		botao.setContentAreaFilled(false);
-		botao.setBackground(new Color(255,000,000));
+		mudaLayoutBotao();
 		botao.setIcon(icone);
 		habilitado = false;
 		bandeira = false;
 		botao.removeMouseListener(trataClick);
 		botao.setBackground(new Color(255, 000, 000));
 	}
-	
+
+	private void mudaLayoutBotao() {
+		botao.setFocusable(false);
+		botao.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		botao.setContentAreaFilled(false);
+		botao.setBackground(new Color(255,000,000));
+	}
+
 	public int getX() {
 		// RETORNA A POSIÇÃO X DE UM BOTÃO
 		return botao.getX();
@@ -111,13 +108,9 @@ public class Botao {
 	
 	public void abreTodas(MouseListener trataClick, ImageIcon addmina) {
 		// REVELA ONDE ESTÃO TODAS AS MINAS
-		botao.setFocusable(false);
-		botao.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		botao.setContentAreaFilled(false);
-		botao.setBackground(new Color(255,000,000));
+		mudaLayoutBotao();
 		botao.removeMouseListener(trataClick);
-		//addmina.setImage(addmina.getImage().getScaledInstance(50, 50, 100)); // COMANDO QUE PODE SER UTIL PRA AJUSTAR A IMAGEM
-		botao.setIcon(addmina);		
+		botao.setIcon(addmina);
 	}
 	
 	public void fimDeJogo(MouseListener trataClick) {
